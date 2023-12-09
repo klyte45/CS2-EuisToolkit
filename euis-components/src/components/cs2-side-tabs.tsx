@@ -2,7 +2,6 @@ import { Component } from "react";
 
 import "../styles/react-tabs.scss";
 import "../styles/cs2-side-tabs-menu.scss";
-import { translate } from "../utility/translate";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 
@@ -12,6 +11,7 @@ export class Cs2SideTabs<X extends string> extends Component<{
     tabsOrder: (X | undefined)[]
     currentTab: X
     i18nTitlePrefix: string
+    translateFn: (key: string, fallback?: string) => string
     onSetCurrentTab: (newTab: X) => void
 }, {}> {
     constructor(props) {
@@ -25,7 +25,7 @@ export class Cs2SideTabs<X extends string> extends Component<{
                     <TabList className="sideNav" >
                         {this.props.tabsOrder.map((x, i) => !x
                             ? <div className="space" key={i}></div>
-                            : <Tab key={i} disabled={Array.isArray(this.props.clickableTabs) && !this.props.clickableTabs.includes(x)}>{translate(this.props.i18nTitlePrefix + x)}</Tab>
+                            : <Tab key={i} disabled={Array.isArray(this.props.clickableTabs) && !this.props.clickableTabs.includes(x)}>{this.props.translateFn(this.props.i18nTitlePrefix + x)}</Tab>
                         )}
                     </TabList>
                     <div className="dataPanel">
