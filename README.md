@@ -4,8 +4,11 @@ This is a utility project to help building UI for mods from Cities Skylines 2. C
 
 ## Installation instructions
 
-- Add this repository as a git submodule in the UI folder of your mod, prefer to name the folder as `_replacements` (this name was used as reference for paths below). 
-    - The UI folder must be the one with all EUIS react projects.
+- Add this repository as a git submodule in the `UI` folder of your mod, prefer to name the folder as `_replacements`:
+
+    ```git.exe submodule add   -- "<This repo URL>" "UI/_replacements"``` 
+
+    - The `UI` folder is the one with all EUIS react projects.
 - In each EUIS react project, add these lines to `dependencies` part on `package.json`:
 ```
     "@emotion/cache": "file:../_replacements/cache-11.11.0-k45.tgz",
