@@ -10,7 +10,6 @@ export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
     onChange?: (newValue: Option, actionMeta: ActionMeta<Option>) => void
     getOptionLabel?: GetOptionLabel<Option>,
     getOptionValue?: GetOptionValue<Option>,
-    defaultValue?: Option
 }) => <>
         <Select
             styles={styleProxy}
@@ -32,7 +31,5 @@ export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
             onChange={props.onChange}
             value={props.value}
             unstyled={true}
-            filterOption={(x, input) => (x.label ?? "").toLowerCase().includes(input.toLowerCase())}
-            defaultValue={props.defaultValue}
         />
     </>
