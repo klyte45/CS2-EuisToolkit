@@ -19,6 +19,7 @@
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.3.1",
     "systemjs-webpack-interop": "file:../systemjs-webpack-interop-2.3.7-euis.tgz",
+    "coherent-gameface-scrollable-container": "^3.1.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0"
   }  
 }
