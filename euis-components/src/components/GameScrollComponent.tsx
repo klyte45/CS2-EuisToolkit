@@ -17,13 +17,19 @@ interface GamefaceScrollableContainer extends React.DetailedHTMLProps<React.HTML
     class?: string
 }
 interface GamefaceComponentSlotProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-    'data-name': string
+    'data-name': string,
+    class?: string
 }
 
-export class GameScrollComponent extends Component<{}>{
+type GameScrollComponentProps = {
+    contentClass?: string,
+    parentContainerClass?: string
+}
+
+export class GameScrollComponent extends Component<GameScrollComponentProps>{
     render() {
-        return <gameface-scrollable-container class="no-arrows" automatic>
-            <component-slot data-name="scrollable-content">
+        return <gameface-scrollable-container class={"no-arrows " + this.props.parentContainerClass} automatic>
+            <component-slot data-name="scrollable-content" class={this.props.contentClass}>
                 {this.props.children}
             </component-slot>
         </gameface-scrollable-container>
