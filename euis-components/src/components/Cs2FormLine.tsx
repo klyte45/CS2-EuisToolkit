@@ -3,7 +3,7 @@ import '../styles/cs2-form-style.scss'
 
 
 export class Cs2FormLine extends Component<{
-    title: string;
+    title: string | JSX.Element;
     onClick?: () => void;
     compact?: boolean
     className?: string
