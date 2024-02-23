@@ -1,4 +1,4 @@
-///<reference path="../../cohtml.d.ts" />
+///<reference path="../../types/cohtml.d.ts" />
 export enum NameType {
     Custom = "names.CustomName",
     Localized = "names.LocalizedName",

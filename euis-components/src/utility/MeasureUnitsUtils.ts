@@ -20,7 +20,7 @@ export function setupSignificance(val: number, digits: number): string {
 }
 
 export function kilogramsTo(value: number, unit: MeasureUnit, perMonth: boolean = false): [string, Record<string, string>] {
-    const keyPath = perMonth ? "montly" : "linear";
+    const keyPath = perMonth ? "monthly" : "linear";
     const unitArr = MetricUnitsEntries.mass[keyPath][unit];
     switch (unit) {
         case MeasureUnit.FREEDOM:
@@ -66,7 +66,7 @@ export function metersTo(value: number, unit: MeasureUnit): [string, Record<stri
 
 
 export function squareMetersTo(value: number, unit: MeasureUnit, perMonth: boolean = false): [string, Record<string, string>] {
-    const keyPath = perMonth ? "montly" : "linear";
+    const keyPath = perMonth ? "monthly" : "linear";
     const unitArr = MetricUnitsEntries.mass[keyPath][unit];
     switch (unit) {
         case MeasureUnit.FREEDOM:
@@ -87,7 +87,7 @@ export function squareMetersTo(value: number, unit: MeasureUnit, perMonth: boole
 }
 
 export function cubicMetersTo(value: number, unit: MeasureUnit, perMonth: boolean = false): [string, Record<string, string>] {
-    const keyPath = perMonth ? "montly" : "linear";
+    const keyPath = perMonth ? "monthly" : "linear";
     const unitArr = MetricUnitsEntries.mass[keyPath][unit];
     switch (unit) {
         case MeasureUnit.FREEDOM:

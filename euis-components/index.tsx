@@ -1,7 +1,3 @@
-///<reference path="euis.d.ts" />
-///<reference path="cohtml.d.ts" />
-///<reference path="declarations.d.ts" />
-
 import "./src/styles/treeview.scss";
 
 export * from "./src/components/cs2-checkbox"
