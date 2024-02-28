@@ -19,8 +19,10 @@ export type NameFormatted = {
     nameArgs?: string[]
 }
 
-export function nameToString(nameObj: NameCustom | NameFormatted | NameLocalized) {
-    if(!nameObj) return;
+export type ValuableName = NameCustom | NameLocalized | NameFormatted
+
+export function nameToString(nameObj: ValuableName) {
+    if (!nameObj) return;
     if (nameObj.__Type == NameType.Custom) {
         return nameObj.name;
     }
