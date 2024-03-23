@@ -1,3 +1,5 @@
+import { replaceArgs } from "./name.utils"
+
 export enum TimeFormat {
     TwentyFourHours,
     TwelveHours
@@ -14,10 +16,14 @@ export enum UnitSystem {
     Freedom
 }
 
+export type ValuableObject<T> = {
+    value__: T
+}
+
 export type UnitSettings = {
-    timeFormat: TimeFormat
-    temperatureUnit: TemperatureUnit
-    unitSystem: UnitSystem
+    timeFormat: ValuableObject<TimeFormat>
+    temperatureUnit: ValuableObject<TemperatureUnit>
+    unitSystem: ValuableObject<UnitSystem>
 }
 
 export const FRAMES_EACH_DAY = 262144;
@@ -107,6 +113,10 @@ export function cubicMetersTo(value: number, unit: UnitSystem, perMonth: boolean
             return [unitArr[0], { VALUE: value.toFixed(0) }]
 
     }
+}
+
+export function translateUnitResult(input: [string, Record<string, string>]) {
+    return replaceArgs(engine.translate(input[0]), { ...input[1], "SIGN": "" })
 }
 
 export const MetricUnitsEntries = {
