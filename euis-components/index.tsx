@@ -7,15 +7,6 @@ export * from "./src/components/DefaultPanelScreen"
 export * from "./src/components/cs2-side-tabs"
 export * from "./src/components/input"
 export * from "./src/components/GameScrollComponent"
-export * from "./src/components/vanillaSideWindow/VanillaSideWindow"
-export * from "./src/components/vanillaSideWindow/VanillaWindowActionButton"
-export * from "./src/components/vanillaSideWindow/VanillaWindowSectionDescription"
-export * from "./src/components/vanillaSideWindow/VanillaWindowSectionIconNotification"
-export * from "./src/components/vanillaSideWindow/VanillaWindowSectionMainKeyValue"
-export * from "./src/components/vanillaSideWindow/VanillaWindowSectionProgressBar"
-export * from "./src/components/vanillaSideWindow/VanillaWindowSectionSubKeyValue"
-export * from "./src/components/vanillaSideWindow/VanillaWindowTitle"
-export * from "./src/components/vanillaSideWindow/VanillaWindowToggleButton"
 
 
 

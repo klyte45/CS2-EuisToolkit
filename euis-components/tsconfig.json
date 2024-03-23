@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "jsx": "react-jsx",
-    "target": "ES2015",
+    "target": "ES2019",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "typeRoots": [
