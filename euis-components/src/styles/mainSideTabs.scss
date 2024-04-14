@@ -134,13 +134,15 @@
         bottom: 0;
         right: 0;
         top: 0;
-        max-width: 0;
-        transition-property: left;
+        transition-property: left, opacity;
         transition-duration: var(--transitionTime);
         transition-timing-function: var(--transitionFn);
+        pointer-events: none;
+        opacity: 0;
 
         &.react-tabs__tab-panel--selected {
-            max-width: 100%;
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 }
