@@ -26,9 +26,12 @@ type GameScrollComponentProps = {
     parentContainerClass?: string
 }
 
-export class GameScrollComponent extends Component<GameScrollComponentProps>{
+export class GameScrollComponent extends Component<GameScrollComponentProps> {
     render() {
-        return <gameface-scrollable-container class={"no-arrows " + this.props.parentContainerClass} automatic>
+        return <gameface-scrollable-container class={"no-arrows " + this.props.parentContainerClass} automatic style={{
+            display: "flex",
+            flex: "1 1"
+        }}>
             <component-slot data-name="scrollable-content" class={this.props.contentClass}>
                 {this.props.children}
             </component-slot>
