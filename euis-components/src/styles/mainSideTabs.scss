@@ -1,0 +1,146 @@
+.mainTabsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    --widthSideMenu: 60rem;
+    --transitionTime: .5s;
+    --transitionFn: ease-in-out;
+
+    &.expanded {
+        --widthSideMenu: 250rem;
+    }
+
+    .topMainMenuButton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 70px;
+        width: var(--widthSideMenu);
+        background-color: transparent;
+        z-index: 9;
+        padding-top: 15rem;
+        padding-left: 9rem;
+
+        transition-property: width;
+        transition-duration: var(--transitionTime);
+        transition-timing-function: var(--transitionFn);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .tabItemIcon {
+            width: 40rem;
+            height: 40rem;
+            pointer-events: none;
+        }
+
+        .titleContainer {
+            position: absolute;
+            top: 17rem;
+            left: 55rem;
+            bottom: 9rem;
+            width: calc(var(--widthSideMenu) - 60rem);
+            transition-property: width;
+            transition-duration: var(--transitionTime);
+            transition-timing-function: var(--transitionFn);
+
+            .tabName {
+                width: 100%;
+                height: 20rem;
+                overflow: hidden;
+                pointer-events: none;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+            .tabSubName {
+                width: 100%;
+                height: 20rem;
+                overflow: hidden;
+                pointer-events: none;
+                white-space: nowrap;
+                font-size: 80%;
+            }
+        }
+    }
+
+    .mainMenuStrip {
+        border-right-width: 3rem;
+        border-right-style: solid;
+        border-right-color: var(--sectionBorderColor);
+        margin: 0 10rem 0 0rem;
+        padding: 70rem 3rem 2rem 0;
+        display: flex;
+        position: absolute;
+        top: 0rem;
+        left: 0;
+        width: var(--widthSideMenu);
+        flex-direction: column;
+        bottom: 0;
+        transition-property: width;
+        transition-duration: var(--transitionTime);
+        transition-timing-function: var(--transitionFn);
+        overflow: hidden;
+
+        .mainMenuStripTab {
+            display: flex;
+            border: 1rem solid transparent;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            bottom: -1rem;
+            position: relative;
+            padding: 6rem 12rem;
+            width: var(--widthSideMenu);
+            transition-property: width;
+            transition-duration: var(--transitionTime);
+            transition-timing-function: var(--transitionFn);
+            overflow: hidden;
+
+            .tabItemIcon {
+                width: 30rem;
+                height: 30rem;
+                pointer-events: none;
+            }
+
+            .tabName {
+                width: calc(var(--widthSideMenu) - 60rem);
+                height: 30rem;
+                overflow: hidden;
+                pointer-events: none;
+                padding-top: 3.000000rem;
+                margin-left: 15.000000rem;
+                transition-property: width;
+                transition-duration: var(--transitionTime);
+                transition-timing-function: var(--transitionFn);
+                white-space: nowrap;
+            }
+        }
+
+        .guic-slider-component {
+            margin-left: -5.000000rem;
+        }
+    }
+
+    .mainMenuStripContent {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        position: absolute;
+        bottom: 0;
+        left: calc(var(--widthSideMenu) + 5rem);
+        bottom: 0;
+        right: 0;
+        top: 0;
+        max-width: 0;
+        transition-property: left;
+        transition-duration: var(--transitionTime);
+        transition-timing-function: var(--transitionFn);
+
+        &.react-tabs__tab-panel--selected {
+            max-width: 100%;
+        }
+    }
+}
