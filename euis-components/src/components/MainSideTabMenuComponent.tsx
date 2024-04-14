@@ -7,6 +7,7 @@ export type MenuItem = {
     name: string,
     iconUrl: string,
     panelContent: JSX.Element
+    tintedIcon?: boolean
 }
 
 type Props = {
@@ -33,7 +34,11 @@ export class MainSideTabMenuComponent extends Component<Props, State> {
                 </div>
                 <TabList className="mainMenuStrip">
                     <GameScrollComponent>
-                        {this.props.items.map((x, i) => <Tab key={i} className="mainMenuStripTab" data-tooltip={x.name} data-tootip-position="top left"><img src={x.iconUrl} className="tabItemIcon" /><div className="tabName">{x.name}</div></Tab>)}
+                        {this.props.items.map((x, i) => <Tab key={i} className="mainMenuStripTab" data-tooltip={x.name} data-tootip-position="top left">
+                            {!x.tintedIcon && <img src={x.iconUrl} className="tabItemIcon" />}
+                            {x.tintedIcon && <div className="tabItemIcon" style={{ maskImage: `url(${x.iconUrl})` }} />}
+                            <div className="tabName">{x.name}</div>
+                        </Tab>)}
                     </GameScrollComponent>
                 </TabList>
                 {this.props.items.map((x, i) => <TabPanel className="mainMenuStripContent" key={i}>{x.panelContent}</TabPanel>)}
