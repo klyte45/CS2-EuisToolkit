@@ -1,10 +1,12 @@
 import { Component } from "react";
+import { GameScrollComponent } from "./GameScrollComponent";
 
 type Props = {
     title: string;
     subtitle?: string;
     buttonsRowContent?: JSX.Element,
     isSubScreen?: boolean,
+    scrollable?: boolean,
     offsets?: {
         bottom?: number,
         left?: number,
@@ -26,7 +28,7 @@ export class DefaultPanelScreen extends Component<Props, {}> {
                 right: this.props.offsets?.right ?? 5,
                 top: this.props.offsets?.top ?? this.props.isSubScreen ? 60 : 120
             }}>
-                {this.props.children}
+                {this.props.scrollable ? <GameScrollComponent>{this.props.children}</GameScrollComponent> : this.props.children}
             </section>
             {this.props.buttonsRowContent && <div style={{ display: "flex", position: "absolute", left: 5, right: 5, bottom: 5, flexDirection: "row-reverse" }}>
                 {this.props.buttonsRowContent}
