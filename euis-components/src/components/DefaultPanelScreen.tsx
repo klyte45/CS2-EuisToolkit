@@ -24,7 +24,7 @@ export class DefaultPanelScreen extends Component<Props, {}> {
                 bottom: (this.props.offsets?.bottom ?? 0) + (this.props.buttonsRowContent ? 52 : 5),
                 left: this.props.offsets?.left ?? 5,
                 right: this.props.offsets?.right ?? 5,
-                top: this.props.offsets?.top ?? this.props.isSubScreen ? 60 : 107
+                top: this.props.offsets?.top ?? this.props.isSubScreen ? 60 : 120
             }}>
                 {this.props.children}
             </section>
