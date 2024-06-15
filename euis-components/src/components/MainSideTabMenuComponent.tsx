@@ -14,7 +14,8 @@ type Props = {
     items: MenuItem[],
     mainIconUrl: string,
     modTitle: string,
-    subtitle: string
+    subtitle: string,
+    tooltip?: string
 }
 type State = {
     expanded?: boolean
@@ -25,7 +26,7 @@ export class MainSideTabMenuComponent extends Component<Props, State> {
     render(): ReactNode {
         return <>
             <Tabs className={`mainTabsContainer ${this.state?.expanded ? "expanded" : ""}`} onSelect={() => this.setState({ expanded: false })}>
-                <div onClick={x => this.setState({ expanded: !this.state?.expanded })} className="topMainMenuButton" data-tooltip={this.props.modTitle} data-tootip-position="bottom left">
+                <div onClick={x => this.setState({ expanded: !this.state?.expanded })} className="topMainMenuButton" data-tooltip={this.props.tooltip ?? this.props.modTitle} data-tootip-position="bottom left">
                     <img src={this.props.mainIconUrl} className="tabItemIcon" />
                     <div className="titleContainer">
                         <div className="tabName">{this.props.modTitle}</div>
