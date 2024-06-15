@@ -1,6 +1,6 @@
-# Cities Skylines 2 React Toolkit
+# Cities Skylines 2 EUIS Toolkit
 
-This is a utility project to help building UI for mods from Cities Skylines 2. CS2 uses Coherent UI as engine, based on Chromium web browser standards but with limitations. This package was created to help with some of them, as well offers some styling matching the game CSS.
+This is a utility project to help building UI for mods from Cities Skylines 2 with the Extra UI Screens mod - EUIS. CS2 uses Coherent UI as engine, based on Chromium web browser standards but with limitations. This package was created to help with some of them, as well offers some styling matching the game CSS.
 
 ## Installation instructions
 
@@ -17,4 +17,4 @@ This is a utility project to help building UI for mods from Cities Skylines 2. C
     "@klyte45/euis-components": "file:../_replacements/euis-components/",
 ```
 
-The `euis-components` folder will receive new components in the future, as well will try to follow the game UI news.
+As the `euis-components` folder will receive new components in the future, I recommend that you create your own version of this repository since some refactoring can be done at any time. So you can prepare your projects if a breaking change get done in the future.
