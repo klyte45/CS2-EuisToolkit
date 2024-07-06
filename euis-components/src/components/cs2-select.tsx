@@ -10,7 +10,7 @@ export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
     onChange?: (newValue: Option, actionMeta: ActionMeta<Option>) => void
     getOptionLabel?: GetOptionLabel<Option>,
     getOptionValue?: GetOptionValue<Option>,
-    defaultValue?: Option
+    defaultValue?: Option,
 }) => <>
         <Select
             styles={styleProxy}
