@@ -5,6 +5,7 @@ type Props = {
     title: string;
     subtitle?: string;
     buttonsRowContent?: JSX.Element,
+    children?: JSX.Element | JSX.Element[] | string,
     isSubScreen?: boolean,
     scrollable?: boolean,
     offsets?: {

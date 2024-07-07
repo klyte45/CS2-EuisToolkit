@@ -24,6 +24,7 @@ interface GamefaceComponentSlotProps extends React.DetailedHTMLProps<React.HTMLA
 type GameScrollComponentProps = {
     contentClass?: string,
     parentContainerClass?: string
+    children?: JSX.Element | JSX.Element[] | string
 }
 
 export class GameScrollComponent extends Component<GameScrollComponentProps> {
