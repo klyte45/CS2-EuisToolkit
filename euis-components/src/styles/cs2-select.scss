@@ -116,6 +116,7 @@
             border-bottom-color: var(--menuControlBorder);
             border-right-color: var(--menuControlBorder);
             max-height: 50vh;
+            z-index: 99999;
 
             .option {
                 padding-top: 4.000000rem;
@@ -130,7 +131,6 @@
                 }
             }
 
-            z-index: 99999;
         }
     }
 }
