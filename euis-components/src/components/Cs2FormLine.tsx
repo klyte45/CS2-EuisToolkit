@@ -8,6 +8,7 @@ export class Cs2FormLine extends Component<{
     compact?: boolean
     className?: string
     subtitle?: string | JSX.Element
+    children?: JSX.Element | JSX.Element[] |string
 }, {}> {
     constructor(props) {
         super(props);

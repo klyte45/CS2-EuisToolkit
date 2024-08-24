@@ -5,6 +5,7 @@ type Props = {
     title: string;
     subtitle?: string;
     buttonsRowContent?: JSX.Element,
+    children?: JSX.Element | JSX.Element[] | string,
     isSubScreen?: boolean,
     scrollable?: boolean,
     offsets?: {
@@ -30,7 +31,7 @@ export class DefaultPanelScreen extends Component<Props, {}> {
             }}>
                 {this.props.scrollable ? <GameScrollComponent>{this.props.children}</GameScrollComponent> : this.props.children}
             </section>
-            {this.props.buttonsRowContent && <div style={{ display: "flex", position: "absolute", left: 5, right: 5, bottom: 5, flexDirection: "row-reverse" }}>
+            {this.props.buttonsRowContent && <div style={{ display: "flex", position: "absolute", left: "5rem", right: "5rem", bottom: "5rem", flexDirection: "row-reverse", maxHeight: "43rem" }}>
                 {this.props.buttonsRowContent}
             </div>}
         </>

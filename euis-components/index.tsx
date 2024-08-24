@@ -8,6 +8,7 @@ export * from "./src/components/cs2-side-tabs"
 export * from "./src/components/input"
 export * from "./src/components/GameScrollComponent"
 export * from "./src/components/MainSideTabMenuComponent"
+export * from "./src/components/ErrorBoundary"
 
 
 
