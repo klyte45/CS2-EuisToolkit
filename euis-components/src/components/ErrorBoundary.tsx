@@ -17,7 +17,10 @@ export class ErrorBoundary extends Component<{ children: JSX.Element | JSX.Eleme
   render() {
     if ((this.state as any)?.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <>
+        <h1>Something went wrong.</h1>
+        <h2>Reload the window to restart it. (click twice on the taskbar icon)</h2>
+      </>;
     }
     return this.props.children;
   }
