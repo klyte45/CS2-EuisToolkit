@@ -1,5 +1,5 @@
 import { ColorUtils } from "../utility/ColorUtils";
-import { CSSProperties, Component, KeyboardEvent } from "react";
+import { CSSProperties, Component, KeyboardEvent, useState } from "react";
 
 interface InputProps {
     title: string | JSX.Element;
@@ -17,115 +17,94 @@ interface InputProps {
     extraKeyPressFilter?: (x: KeyboardEvent<HTMLInputElement>) => void
 }
 
-export class Input extends Component<InputProps, {}> {
-    constructor(props: InputProps) {
-        super(props);
-        this.state = {}
-    }
+export const Input = (props: InputProps) => <>
+    <div className="cs2-fieldStyle cs2-fieldStyle2">
+        <div className="cs2-form-item-label cs2-form-item-label2">
+            {props.title}
+            {props.subtitle}
+        </div>
+        <SimpleInput {...props} />
+    </div>
+</>
 
 
-    render() {
-        return (
-            <>
-                <div className="cs2-fieldStyle cs2-fieldStyle2">
-                    <div className="cs2-form-item-label cs2-form-item-label2">
-                        {this.props.title}
-                        {this.props.subtitle}
-                    </div>
-                    <SimpleInput {...this.props} />
-                </div>
-            </>
-        );
-    }
-
-}
 
 
-export class SimpleInput extends Component<Omit<InputProps, 'title'>, { value: string, refValue: string }> {
-    constructor(props: InputProps) {
-        super(props);
-        this.state = {
-            value: this.props.getValue(),
-            refValue: this.props.getValue()
-        }
-    }
+export const SimpleInput = (props: Omit<InputProps, 'title'>) => {
 
-    render() {
-        const { onValueChanged } = this.props;
-        const currentOuterValue = this.props.getValue();
-        let targetValue = this.state.value;
-        if (currentOuterValue != this.state.refValue) {
-            this.setState({
-                value: targetValue = this.props.getValue(),
-                refValue: this.props.getValue()
-            })
-        }
-        const overrideStyle: any = { width: "50%" };
-        if (this.props.cssCustomOverrides && (!this.props.isValid || this.props.isValid(this.state.value))) {
-            overrideStyle.backgroundColor = this.props.cssCustomOverrides.backgroundColor?.(this.state.value);
-            overrideStyle.color = this.props.cssCustomOverrides.color?.(this.state.value);
-            overrideStyle.fontWeight = this.props.cssCustomOverrides.fontWeight;
-        }
-        return (
-            <>
-                <input style={overrideStyle}
-                    value={targetValue}
-                    className={"cs2-value-field cs2-form-value " + this.checkInvalidClasses()}
-                    onChange={x => this.setState({ value: x.target.value })}
-                    onKeyDown={(x) => this.onKeyDown(x)}
-                    onBlur={async () => this.setState({ value: await onValueChanged(this.state.value) })}
-                    maxLength={this.props.maxLength}
-                    onKeyDownCapture={(x) => this.props.extraKeyPressFilter?.(x)}
-                />
-            </>
-        );
-    }
-    onKeyDown(x: KeyboardEvent<HTMLInputElement>): void {
+    const [value, setValue] = useState(props.getValue());
+    const [refValue, setRefValue] = useState(props.getValue());
+
+    function onKeyDown(x: KeyboardEvent<HTMLInputElement>): void {
         if (x.key == "Escape") {
             const currentTarget = x.currentTarget;
-            this.setState({ value: this.props.getValue() }, () => {
-                currentTarget.value = this.state.value
-                currentTarget.blur();
-            })
+            setValue(props.getValue())
+            currentTarget.value = value
+            currentTarget.blur();
         } else if (x.key == "Enter") {
-            if (!this.props.isValid || this.props.isValid(x.currentTarget.value)) {
+            if (!props.isValid || props.isValid(x.currentTarget.value)) {
                 x.currentTarget.blur();
             }
         } else if (x.key == "Tab") {
-            if (this.props.onTab) {
-                this.setState({ value: this.props.onTab(this.state.value, x.shiftKey) })
+            if (props.onTab) {
+                setValue(props.onTab(value, x.shiftKey))
             }
         }
     }
 
-    checkInvalidClasses() {
-        if (this.props.isValid && !this.props.isValid(this.state.value)) {
+
+    function checkInvalidClasses() {
+        if (props.isValid && !props.isValid(value)) {
             return "input_invalidValue"
         }
     }
-}
 
+    const { onValueChanged } = props;
+    const currentOuterValue = props.getValue();
+    let targetValue = value;
+    if (currentOuterValue != refValue) {
+        setValue(targetValue = props.getValue())
+        setRefValue(props.getValue())
 
-export class ColorRgbInput extends Component<ColorInputProps, {}> {
-
-    render() {
-        return <Input {...this.props}
-            cssCustomOverrides={{
-                backgroundColor: (val) => ColorUtils.toRGB6(val),
-                color: (val) => {
-                    let rgb = ColorUtils.toRGB6(val)
-                    return rgb ? ColorUtils.toRGBA(ColorUtils.getContrastColorFor(ColorUtils.toColor01(rgb))) : ""
-                },
-                fontWeight: 'bold'
-            }}
-            maxLength={7}
-            isValid={x => !!ColorUtils.getHexRegexParts(x)}
-            onValueChanged={(x) => this.props.onValueChanged(ColorUtils.toRGB6(x))}
-        />
     }
+    const overrideStyle: any = { width: "50%" };
+    if (props.cssCustomOverrides && (!props.isValid || props.isValid(value))) {
+        overrideStyle.backgroundColor = props.cssCustomOverrides.backgroundColor?.(value);
+        overrideStyle.color = props.cssCustomOverrides.color?.(value);
+        overrideStyle.fontWeight = props.cssCustomOverrides.fontWeight;
+    }
+    return (
+        <>
+            <input style={overrideStyle}
+                value={targetValue}
+                className={"cs2-value-field cs2-form-value " + checkInvalidClasses()}
+                onChange={x => setValue(x.target.value)}
+                onKeyDown={(x) => onKeyDown(x)}
+                onBlur={async () => setValue(await onValueChanged(value))}
+                maxLength={props.maxLength}
+                onKeyDownCapture={(x) => props.extraKeyPressFilter?.(x)}
+            />
+        </>
+    );
 
 
 }
+
+
+
+export const ColorRgbInput = (props: ColorInputProps) => <Input
+    {...props}
+    cssCustomOverrides={{
+        backgroundColor: (val) => ColorUtils.toRGB6(val),
+        color: (val) => {
+            let rgb = ColorUtils.toRGB6(val);
+            return rgb ? ColorUtils.toRGBA(ColorUtils.getContrastColorFor(ColorUtils.toColor01(rgb))) : "";
+        },
+        fontWeight: 'bold'
+    }}
+    maxLength={7}
+    isValid={x => !!ColorUtils.getHexRegexParts(x)}
+    onValueChanged={(x) => props.onValueChanged(ColorUtils.toRGB6(x))} />
 
 interface ColorInputProps {
     title: string;

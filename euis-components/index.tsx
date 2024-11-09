@@ -1,5 +1,3 @@
-import "./src/styles/treeview.scss";
-
 export * from "./src/components/cs2-checkbox"
 export * from "./src/components/cs2-select"
 export * from "./src/components/Cs2FormLine"
@@ -9,6 +7,7 @@ export * from "./src/components/input"
 export * from "./src/components/GameScrollComponent"
 export * from "./src/components/MainSideTabMenuComponent"
 export * from "./src/components/ErrorBoundary"
+export * from "./src/components/EuisTreeView"
 
 
 

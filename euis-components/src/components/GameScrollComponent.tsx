@@ -1,7 +1,6 @@
 
 import 'coherent-gameface-scrollable-container';
-import '../styles/GameScrollComponent.scss'
-import { Component } from 'react';
+import '../styles/GameScrollComponent.scss';
 
 declare global {
     namespace JSX {
@@ -27,15 +26,13 @@ type GameScrollComponentProps = {
     children?: JSX.Element | JSX.Element[] | string
 }
 
-export class GameScrollComponent extends Component<GameScrollComponentProps> {
-    render() {
-        return <gameface-scrollable-container class={"no-arrows " + this.props.parentContainerClass} automatic style={{
-            display: "flex",
-            flex: "1 1"
-        }}>
-            <component-slot data-name="scrollable-content" class={this.props.contentClass}>
-                {this.props.children}
-            </component-slot>
-        </gameface-scrollable-container>
-    }
+export const GameScrollComponent = ({ parentContainerClass, contentClass, children }: GameScrollComponentProps) => {
+    return <gameface-scrollable-container class={"no-arrows " + parentContainerClass} automatic style={{
+        display: "flex",
+        flex: "1 1"
+    }}>
+        <component-slot data-name="scrollable-content" class={contentClass}>
+            {children}
+        </component-slot>
+    </gameface-scrollable-container>
 }

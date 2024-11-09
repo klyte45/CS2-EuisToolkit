@@ -15,7 +15,6 @@
     "react-dom": "^18.0.9",
     "react-select": "file:../react-select-5.7.3-k45.tgz",
     "react-tabs": "^4.3.0",
-    "react-treeview": "^0.4.7",
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.3.1",
     "systemjs-webpack-interop": "file:../systemjs-webpack-interop-2.3.7-euis.tgz",

@@ -1,30 +1,33 @@
 import { Component } from "react";
 import '../styles/cs2-form-style.scss'
 
-
-export class Cs2FormLine extends Component<{
+type Props = {
     title: string | JSX.Element;
     onClick?: () => void;
     compact?: boolean
     className?: string
     subtitle?: string | JSX.Element
-    children?: JSX.Element | JSX.Element[] |string
-}, {}> {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    render() {
-        return (
-            <>
-                <div className={["cs2-fieldStyle2", (this.props.compact ? "cs2-fieldStyle-compact" : "cs2-fieldStyle"), this.props.className ?? ""].join(" ")} onClick={() => this.props.onClick?.()}>
-                    <div className="cs2-form-item-label cs2-form-item-label2">
-                        {this.props.title}
-                        {this.props.subtitle}
-                    </div>
-                    {this.props.children}
-                </div>
-            </>
-        );
-    }
+    children?: JSX.Element | JSX.Element[] | string
 }
+
+export const Cs2FormLine = ({
+    title,
+    onClick,
+    compact,
+    className,
+    subtitle,
+    children,
+}: Props) => {
+    return (
+        <>
+            <div className={["cs2-fieldStyle2", (compact ? "cs2-fieldStyle-compact" : "cs2-fieldStyle"), className ?? ""].join(" ")} onClick={() => onClick?.()}>
+                <div className="cs2-form-item-label cs2-form-item-label2">
+                    {title}
+                    {subtitle}
+                </div>
+                {children}
+            </div>
+        </>
+    );
+}
+

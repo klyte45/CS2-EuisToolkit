@@ -1,5 +1,5 @@
-import { Component, ReactNode, useState } from "react";
-import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+import { useState } from "react";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "../styles/mainSideTabs.scss";
 import { GameScrollComponent } from "./GameScrollComponent";
 
@@ -16,9 +16,6 @@ type Props = {
     modTitle: string,
     subtitle: string,
     tooltip?: string
-}
-type State = {
-    expanded?: boolean
 }
 
 export const MainSideTabMenuComponent = (props: Props) => {
