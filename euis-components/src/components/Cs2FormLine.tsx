@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import '../styles/cs2-form-style.scss'
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
     compact?: boolean
     className?: string
     subtitle?: string | JSX.Element
-    children?: JSX.Element | JSX.Element[] | string
+    children?: ReactNode
 }
 
 export const Cs2FormLine = ({
