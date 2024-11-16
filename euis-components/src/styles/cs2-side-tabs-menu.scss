@@ -40,6 +40,12 @@
         border-left: 2rem solid;
         border-left-color: var(--menuBorderColor1);
 
+        .H2 {
+            color: white;
+            text-transform: uppercase;
+            border-top: 1px solid var(--menuText1Normal);
+        }
+
         .space {
             flex: 1 1;
         }
