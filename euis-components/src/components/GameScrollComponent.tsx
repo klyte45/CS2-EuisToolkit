@@ -1,6 +1,7 @@
 
 import 'coherent-gameface-scrollable-container';
 import '../styles/GameScrollComponent.scss';
+import { ReactNode } from 'react';
 
 declare global {
     namespace JSX {
@@ -23,10 +24,10 @@ interface GamefaceComponentSlotProps extends React.DetailedHTMLProps<React.HTMLA
 type GameScrollComponentProps = {
     contentClass?: string,
     parentContainerClass?: string
-    children?: JSX.Element | JSX.Element[] | string
+    children?: ReactNode
 }
 
-export const GameScrollComponent = ({ parentContainerClass, contentClass, children }: GameScrollComponentProps) => {
+export const GameScrollComponent = ( { parentContainerClass, contentClass, children }: GameScrollComponentProps) => {
     return <gameface-scrollable-container class={"no-arrows " + parentContainerClass} automatic style={{
         display: "flex",
         flex: "1 1"
