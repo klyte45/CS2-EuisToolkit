@@ -43,7 +43,12 @@
         .H2 {
             color: white;
             text-transform: uppercase;
-            border-top: 1px solid var(--menuText1Normal);
+            border-top-color: var(--sectionBorderColor);
+            border-top-style: solid;
+            border-top-width: 1px;
+            text-align: center;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         }
 
         .space {
