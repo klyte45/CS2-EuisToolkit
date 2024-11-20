@@ -30,7 +30,7 @@ export const Input = (props: InputProps) => <>
 
 
 
-export const SimpleInput = (props: Omit<InputProps, 'title'>) => {
+export const SimpleInput = (props: Omit<InputProps, 'title'> & { className?: string }) => {
 
     const [value, setValue] = useState(props.getValue());
     const [refValue, setRefValue] = useState(props.getValue());
@@ -77,7 +77,7 @@ export const SimpleInput = (props: Omit<InputProps, 'title'>) => {
         <>
             <input style={overrideStyle}
                 value={targetValue}
-                className={"cs2-value-field cs2-form-value " + checkInvalidClasses()}
+                className={["cs2-value-field cs2-form-value", checkInvalidClasses(), props.className].join(" ")}
                 onChange={x => setValue(x.target.value)}
                 onKeyDown={(x) => onKeyDown(x)}
                 onBlur={async () => setValue(await onValueChanged(value))}
