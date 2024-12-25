@@ -1,4 +1,3 @@
-import { Component, useState } from "react";
 import { Cs2FormLine } from "./Cs2FormLine";
 
 export interface Cs2CheckboxProps {
@@ -9,17 +8,17 @@ export interface Cs2CheckboxProps {
 
 export const Cs2CheckboxWithLine = ({ title, onValueToggle, isChecked }: Cs2CheckboxProps) => <>
     <Cs2FormLine title={title} onClick={() => onValueToggle(!isChecked())}>
-        <Cs2Checkbox isChecked={isChecked} onValueToggle={(x) => onValueToggle(x)} />
+        <Cs2Checkbox isChecked={isChecked} />
     </Cs2FormLine>
 </>
 
 interface Cs2CheckboxTitlelessProps {
     isChecked: () => boolean;
-    onValueToggle: (newVal: boolean) => void;
+    onValueToggle?: (newVal: boolean) => void;
 }
 
 export const Cs2Checkbox = ({ onValueToggle, isChecked }: Cs2CheckboxTitlelessProps) => <>
-    <div className={`cs2-toggle cs2-item-mouse-states cs2-toggle2 ${isChecked() ? "checked" : "unchecked"}`} onClick={() => onValueToggle(!isChecked())}>
+    <div className={`cs2-toggle cs2-item-mouse-states cs2-toggle2 ${isChecked() ? "checked" : "unchecked"}`} onClick={() => onValueToggle?.(!isChecked())}>
         <div className={`cs2-checkmark ${isChecked() ? "checked" : ""}`}></div>
     </div>
 </>
