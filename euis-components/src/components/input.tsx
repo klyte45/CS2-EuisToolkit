@@ -1,5 +1,6 @@
 import { ColorUtils } from "../utility/ColorUtils";
 import { CSSProperties, Component, KeyboardEvent, useState } from "react";
+import { Cs2FormLine } from "./Cs2FormLine";
 
 interface InputProps {
     title: string | JSX.Element;
@@ -18,13 +19,9 @@ interface InputProps {
 }
 
 export const Input = (props: InputProps) => <>
-    <div className="cs2-fieldStyle cs2-fieldStyle2">
-        <div className="cs2-form-item-label cs2-form-item-label2">
-            {props.title}
-            {props.subtitle}
-        </div>
+    <Cs2FormLine {...props}>
         <SimpleInput {...props} />
-    </div>
+    </Cs2FormLine>
 </>
 
 

@@ -22,8 +22,8 @@ export const Cs2FormLine = ({
         <>
             <div className={["cs2-fieldStyle2", (compact ? "cs2-fieldStyle-compact" : "cs2-fieldStyle"), className ?? ""].join(" ")} onClick={() => onClick?.()}>
                 <div className="cs2-form-item-label cs2-form-item-label2">
-                    {title}
-                    {subtitle}
+                    <div className="title">{title}</div>
+                    <div className="subtitle">{subtitle}</div>
                 </div>
                 {children}
             </div>
