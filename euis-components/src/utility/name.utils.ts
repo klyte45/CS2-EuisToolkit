@@ -43,9 +43,9 @@ function translateArgs(nameArgs: string[]): Record<string, string> {
     }
     return kv;
 }
-export function replaceArgs(template: string, args: Record<string, string>) {
-    return template.replace(/{((?!\d)[\w$]+)}/g, (function (original, n) {
-        var replacement = args[n];
+export function replaceArgs(template: string, args: Record<string, string> | string[]) {
+    return template.replace(/{([\w$]+)}/g, (function (original, n) {
+        var replacement = (args as any)[n];
         return "string" == typeof replacement ? replacement : original
     }))
 }
