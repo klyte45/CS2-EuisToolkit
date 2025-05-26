@@ -25,7 +25,9 @@ export const Cs2FormLine = ({
                     <div className="title">{title}</div>
                     <div className="subtitle">{subtitle}</div>
                 </div>
-                {children}
+                <div  className="cs2-form-item-content">
+                    {children}
+                </div>
             </div>
         </>
     );
