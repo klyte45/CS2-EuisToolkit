@@ -1,6 +1,7 @@
 import { ColorUtils } from "../utility/ColorUtils";
 import { CSSProperties, Component, KeyboardEvent, useState } from "react";
 import { Cs2FormLine } from "./Cs2FormLine";
+import '../styles/cs2-form-style.scss'
 
 interface InputProps {
     title: string | JSX.Element;
@@ -16,6 +17,7 @@ interface InputProps {
     }
     maxLength?: number,
     extraKeyPressFilter?: (x: KeyboardEvent<HTMLInputElement>) => void
+    disabled?: boolean;
 }
 
 export const Input = (props: InputProps) => <>
@@ -49,7 +51,6 @@ export const SimpleInput = (props: Omit<InputProps, 'title'> & { className?: str
         }
     }
 
-
     function checkInvalidClasses() {
         if (props.isValid && !props.isValid(value)) {
             return "input_invalidValue"
@@ -79,13 +80,51 @@ export const SimpleInput = (props: Omit<InputProps, 'title'> & { className?: str
                 onKeyDown={(x) => onKeyDown(x)}
                 onBlur={async () => setValue(await onValueChanged(value))}
                 maxLength={props.maxLength}
-                onKeyDownCapture={(x) => props.extraKeyPressFilter?.(x)}
+                onKeyUp={(x) => props.extraKeyPressFilter?.(x)}
+                disabled={props.disabled}
             />
         </>
     );
-
-
 }
+
+type NumberSimpleInputProps = {
+    subtitle?: string | JSX.Element;
+    getValue: () => number;
+    onValueChanged: (newVal: number) => number | Promise<number>;
+    isValid?: (newVal: string) => boolean;
+    onTab?: (newVal: string, shiftDown: boolean) => string;
+    cssCustomOverrides?: {
+        backgroundColor?: (value: string) => string,
+        color?: (value: string) => string,
+        fontWeight?: CSSProperties['fontWeight']
+    };
+    maxLength?: number;
+    extraKeyPressFilter?: (x: KeyboardEvent<HTMLInputElement>) => void;
+    className?: string;
+    precision?: number;
+    min?: number;
+    max?: number;
+    disabled?: boolean;
+};
+
+
+export const NumberSimpleInput = (props: NumberSimpleInputProps) => {
+    const { getValue, onValueChanged, precision, min, max } = props;
+    return <SimpleInput {...props} isValid={(x) => {
+        const parsed = parseFloat(x?.replace(",", "."));
+        return !isNaN(parsed) && isFinite(parsed) && parsed >= (min ?? -Infinity) && parsed <= (max ?? +Infinity) && (props.isValid ? props.isValid(x) : true);
+    }} getValue={() => {
+        const value = getValue();
+        if (isNaN(value) || !isFinite(value)) { return ""; }
+        return value.toFixed(precision ?? 3);
+    }}
+        onValueChanged={async (x) => {
+            const result = await onValueChanged(parseFloat(x?.replace(",", ".")));
+            if (isNaN(result) || !isFinite(result)) { return ""; }
+            return result.toFixed(precision ?? 3);
+        }} />
+}
+
 
 
 

@@ -104,7 +104,9 @@
     border-bottom-color: var(--accentColorLight);
     border-right-color: var(--accentColorLight);
     border-radius: 3rem;
-    transition: background-color 150ms
+    transition: background-color 150ms;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 .cs2-toggle.disabled {

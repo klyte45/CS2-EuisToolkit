@@ -1,4 +1,5 @@
 import { Cs2FormLine } from "./Cs2FormLine";
+import '../styles/cs2-form-style.scss'
 
 export interface Cs2CheckboxProps {
     title: string;
