@@ -128,7 +128,7 @@ export const NumberSimpleInput = (props: NumberSimpleInputProps) => {
 
 
 
-export const ColorRgbInput = (props: ColorInputProps) => <Input
+export const ColorRgbInput = (props: ColorInputProps & { title: string; }) => <Input
     {...props}
     cssCustomOverrides={{
         backgroundColor: (val) => ColorUtils.toRGB6(val),
@@ -143,8 +143,21 @@ export const ColorRgbInput = (props: ColorInputProps) => <Input
     onValueChanged={(x) => props.onValueChanged(ColorUtils.toRGB6(x))} />
 
 interface ColorInputProps {
-    title: string;
     getValue: () => `#${string}`;
     onValueChanged: (newVal: `#${string}`) => `#${string}` | Promise<`#${string}`>;
     onTab?: (newVal: `#${string}`, shiftDown: boolean) => `#${string}`;
 }
+
+export const ColorRgbSimpleInput = (props: ColorInputProps) => <SimpleInput
+    {...props}
+    cssCustomOverrides={{
+        backgroundColor: (val) => ColorUtils.toRGB6(val),
+        color: (val) => {
+            let rgb = ColorUtils.toRGB6(val);
+            return rgb ? ColorUtils.toRGBA(ColorUtils.getContrastColorFor(ColorUtils.toColor01(rgb))) : "";
+        },
+        fontWeight: 'bold'
+    }}
+    maxLength={7}
+    isValid={x => !!ColorUtils.getHexRegexParts(x)}
+    onValueChanged={(x) => props.onValueChanged(ColorUtils.toRGB6(x))} />

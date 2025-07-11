@@ -1,9 +1,7 @@
 
 import Select, { ActionMeta, GetOptionLabel, GetOptionValue, GroupBase, OnChangeValue, OptionsOrGroups, PropsValue } from 'react-select';
 import '../styles/cs2-select.scss'
-const styleProxy = new Proxy({}, {
-    get: (target, propKey) => () => { }
-});
+
 export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
     value?: PropsValue<Option>,
     options?: OptionsOrGroups<Option, Group>,
@@ -13,11 +11,12 @@ export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
     defaultValue?: Option,
 }) => <>
         <Select
-            styles={styleProxy}
-            options={props.options}
+            options={props.options ?? []}
             className="react-select-container"
             aria-live="off"
             closeMenuOnSelect={false}
+            menuPortalTarget={document.body.querySelector("[data-safe-name]")}
+            menuPosition="absolute"
             classNames={{
                 valueContainer: () => "value-container",
                 control: () => "value-control",
@@ -30,10 +29,12 @@ export const Cs2Select = <Option, Group extends GroupBase<Option>>(props: {
             getOptionLabel={props.getOptionLabel}
             getOptionValue={props.getOptionValue}
             onChange={props.onChange}
-            value={props.value}
+            value={props.value ?? null}
             unstyled={true}
             filterOption={(x, input) => (x.label ?? "").toLowerCase().includes(input.toLowerCase())}
-            defaultValue={props.defaultValue}
+            defaultValue={props.defaultValue ?? null}
+            menuShouldScrollIntoView={false}
+            menuPlacement='auto'
         />
     </>
 

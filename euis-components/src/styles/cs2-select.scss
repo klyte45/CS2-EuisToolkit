@@ -83,60 +83,60 @@
     [id^=react-select-][id$=-placeholder] {
         color: var(--menuText1Normal);
     }
+}
 
-    .list-box {
-        height: 2rem;
-        margin-top: -1.5rem;
+.list-box {
+    height: 2rem;
+    margin-top: -1.5rem;
+    z-index: 99999;
+    overflow: visible;
+
+    .menu-list {
+        --contentPaddingHorizontal: var(--contentPadding);
+        --scrollbarThumbSize: 4rem;
+        --scrollbarMarginVertical: 6rem;
+        --contentPaddingVertical: var(--contentPadding);
+        --scrollbarPadding: var(--scrollbarSize);
+        --contentPadding: 0rem;
+        --scrollbarMarginHorizontal: 6rem;
+        --scrollbarSize: 16rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        padding-top: 0.000000rem;
+        padding-left: 0.000000rem;
+        padding-right: 0.000000rem;
+        padding-bottom: 0.000000rem;
+
+        font-size: var(--fontSizeM);
+        background-color: var(--menuControl2);
+        border-top-style: none;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-top-width: var(--stroke1);
+        border-left-width: var(--stroke1);
+        border-bottom-width: var(--stroke1);
+        border-right-width: var(--stroke1);
+        border-top-color: var(--menuControlBorder);
+        border-left-color: var(--menuControlBorder);
+        border-bottom-color: var(--menuControlBorder);
+        border-right-color: var(--menuControlBorder);
+        max-height: 50vh;
         z-index: 99999;
-        overflow: visible;
 
-        .menu-list {
-            --contentPaddingHorizontal: var(--contentPadding);
-            --scrollbarThumbSize: 4rem;
-            --scrollbarMarginVertical: 6rem;
-            --contentPaddingVertical: var(--contentPadding);
-            --scrollbarPadding: var(--scrollbarSize);
-            --contentPadding: 0rem;
-            --scrollbarMarginHorizontal: 6rem;
-            --scrollbarSize: 16rem;
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: relative;
-            padding-top: 0.000000rem;
-            padding-left: 0.000000rem;
-            padding-right: 0.000000rem;
-            padding-bottom: 0.000000rem;
+        .option {
+            padding-top: 4.000000rem;
+            padding-left: 8.000000rem;
+            padding-right: 8.000000rem;
+            padding-bottom: 4.000000rem;
+            text-align: left;
+            color: rgba(255, 255, 255, 0.800000);
 
-            font-size: var(--fontSizeM);
-            background-color: var(--menuControl2);
-            border-top-style: none;
-            border-left-style: solid;
-            border-right-style: solid;
-            border-bottom-style: solid;
-            border-top-width: var(--stroke1);
-            border-left-width: var(--stroke1);
-            border-bottom-width: var(--stroke1);
-            border-right-width: var(--stroke1);
-            border-top-color: var(--menuControlBorder);
-            border-left-color: var(--menuControlBorder);
-            border-bottom-color: var(--menuControlBorder);
-            border-right-color: var(--menuControlBorder);
-            max-height: 50vh;
-            z-index: 99999;
-
-            .option {
-                padding-top: 4.000000rem;
-                padding-left: 8.000000rem;
-                padding-right: 8.000000rem;
-                padding-bottom: 4.000000rem;
-                text-align: left;
-                color: rgba(255, 255, 255, 0.800000);
-
-                &:hover {
-                    background-color: var(--hoverColor);
-                }
+            &:hover {
+                background-color: var(--hoverColor);
             }
-
         }
+
     }
 }
